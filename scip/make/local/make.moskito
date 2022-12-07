@@ -1,0 +1,8 @@
+QUEUETYPE		=	srun
+QUEUE			=	moskito
+PPN			=	-1
+MEM			=	27000
+CLIENTTMPDIR		=	/tmp
+NOWAITCLUSTER   	=       1
+EXCLUSIVE       	=       true
+override DEBUGTOOL 	=	none
