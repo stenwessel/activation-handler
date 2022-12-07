@@ -1,9 +1,9 @@
 # Handling Sub-symmetry in Integer Programming using Activation Handlers
 
-This repository contains the experiments setup for testing the activation handler approach for sub-symmetry handling in the Multiple Knapsack Problem, Muin-up/min-down Unit Commitment Problem and the Max-k Colorable Subgraph Problem.
+This repository contains the experiments setup for testing the activation handler approach for sub-symmetry handling in the Multiple Knapsack Problem, Min-up/min-down Unit Commitment Problem and the Max-k Colorable Subgraph Problem.
 
 ## Installation
-The following may be used as a reference to completely install a working environment. It assumes GCC, CMake and Python version (at least) 3.10 are already installed. It has been tested and known to work with GCC version 9.2.0 and CMake version 3.18.4. Note: change /path/to to a path of your liking.
+The following may be used as a reference to completely install a working environment. It assumes GCC, CMake and Python version (at least) 3.10 are already installed. It has been tested and known to work with GCC version 9.2.0 and CMake version 3.18.4. Note: change `/path/to` to a path of your liking.
 
 ```bash
 # Install 3rd party dependencies
@@ -60,6 +60,16 @@ ln -s src/pyscipopt pyscipopt
 pip install -e .
 popd
 ```
+
+## How to navigate this repository
+The `experiments` directory contains Python code that sets up the MKP, MUCP and MKCS models in SCIP, and can be used to evaluate the performance of the different models.
+
+The `scip` directory contains the source code of SCIP, modified with the implementation of the activation handlers.
+Files of interest fit the pattern `scip/src/scip/*activation*`.
+In particular, the files `activation_makespan.h/c`, `activation_suborbitope.h/c`, and `activation_colorcomp.h/c` implement the specific activation handlers used for the MKP, MUCP and MKCS sub-symmetries, respectively.
+
+The `pyscipopt` directory contains the Python interface for SCIP, modified from [the original repository](https://github.com/scipopt/PySCIPOpt) to support the activation handler API endpoints.
+
 
 ## Instances
 Instances for the MKP are included in the `experiments/tests/data` directory.
