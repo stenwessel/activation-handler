@@ -304,7 +304,8 @@ SCIP_RETCODE findSubSymmetries(
             subm->nrows = activationdata->njobs - j;
 
             /* In general, the sub-symmetry is a packing orbitope, except for when the submatrix includes all columns of the matrix; then it is a partitioning orbitope */
-            subm->orbitopetype = subm->ncols == activationdata->nmachines ? SCIP_ORBITOPETYPE_PARTITIONING : SCIP_ORBITOPETYPE_PACKING;
+            /* However, when it is not guaranteed that _all_ items are used, it is only a packing orbitope in this case as well */
+            subm->orbitopetype = SCIP_ORBITOPETYPE_PACKING;
 
             SCIP_CALL( SCIPallocBlockMemoryArray(scip, &subm->cols, subm->ncols) );
 
